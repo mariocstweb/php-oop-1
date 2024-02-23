@@ -8,15 +8,18 @@ class Movies
   public $duration_minutes;
   public $platform;
   public $director;
+
+  public $actors = [];
   
 
   // Costruttore
-  public function __construct($name, $genre, $duration_minutes, $platform, $director){
+  public function __construct($name, $genre, $duration_minutes, $platform, $director, $actors =[]){
     $this->name = $name;
     $this->genre = $genre;
     $this->duration_minutes = $duration_minutes;
     $this->platform = $platform;
     $this->director = $director;
+    $this->actors = $actors;
   }
 
   // Funziona per formattare la durata del film
@@ -40,11 +43,25 @@ class Director
   }
 }
 
+class Actor
+{
+  public $name;
+  public $nationality;
+
+  public function __construct($name, $nationality){
+    $this->name = $name;
+    $this->nationality = $nationality;
+}
+}
+
 $director1 = new Director('Michael Bay', 'USA');
 $director2= new Director('Chad Stahelski', 'USA');
 
-$movies1 = new Movies('Transformers', 'Action', 144, 'Netflix', $director1);
-$movies2 = new Movies('John Wick', 'Crime', 101, 'Amazon', $director2 );
+$actors1 = [new Actor('Willem Dafoe', 'USA')];
+$actors2 = [new Actor('Pippo', 'ITA')]; 
+
+$movies1 = new Movies('Transformers', 'Action', 144, 'Netflix', $director1, $actors1);
+$movies2 = new Movies('John Wick', 'Crime', 101, 'Amazon', $director2, $actors2 );
 
 
 // Unico array da iterare
