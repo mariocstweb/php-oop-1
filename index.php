@@ -7,13 +7,16 @@ class Movies
   public $genre;
   public $duration_minutes;
   public $platform;
+  public $director;
+  
 
   // Costruttore
-  public function __construct($name, $genre, $duration_minutes, $platform){
+  public function __construct($name, $genre, $duration_minutes, $platform, $director){
     $this->name = $name;
     $this->genre = $genre;
     $this->duration_minutes = $duration_minutes;
     $this->platform = $platform;
+    $this->director = $director;
   }
 
   // Funziona per formattare la durata del film
@@ -26,8 +29,24 @@ class Movies
   }
 }
 
-$movies1 = new Movies('Transformers', 'Action', 144, 'Netflix' );
-$movies2 = new Movies('John Wick', 'Crime', 101, 'Amazon' );
+class Director
+{
+  public $name;
+  public $nationality;
+
+  public function __construct($name, $nationality){
+    $this->name = $name;
+    $this->nationality = $nationality;
+  }
+}
+
+$director1 = new Director('Michael Bay', 'USA');
+$director2= new Director('Chad Stahelski', 'USA');
+
+$movies1 = new Movies('Transformers', 'Action', 144, 'Netflix', $director1);
+$movies2 = new Movies('John Wick', 'Crime', 101, 'Amazon', $director2 );
+
+
 // Unico array da iterare
 $movies =  [ $movies1, $movies2 ];
 // var_dump($movies1);
@@ -46,7 +65,7 @@ $movies =  [ $movies1, $movies2 ];
     <div class="container">
       <ul>
         <?php foreach($movies as $movie) :?>
-          <li>Name: <?php echo $movie->name; ?>, Genre: <?php echo $movie->genre; ?>, Duration: <?php echo $movie->getFormattedTime() ?>h, Platform: <?php echo $movie->platform; ?></li>
+          <li>Name: <?php echo $movie->name; ?>, Genre: <?php echo $movie->genre; ?>, Duration: <?php echo $movie->getFormattedTime() ?>h, Platform: <?php echo $movie->platform; ?> <?php echo $movie->director->name ?></li>
         <?php endforeach ?>
       </ul>
     </div>
