@@ -1,74 +1,9 @@
 <?php
-// Definisco la classe Movies
-class Movies
-{
-  // Attributi
-  public $name;
-  public $genre;
-  public $duration_minutes;
-  public $platform;
-  public $director;
+require_once __DIR__ ."/models/movies.php";
+require_once __DIR__ ."/models/director.php";
+require_once __DIR__ ."/models/actors.php";
+require __DIR__ ."./data/posts.php";  
 
-  public $actors = [];
-  
-
-  // Costruttore
-  public function __construct($name, $genre, $duration_minutes, $platform, $director, $actors =[]){
-    $this->name = $name;
-    $this->genre = $genre;
-    $this->duration_minutes = $duration_minutes;
-    $this->platform = $platform;
-    $this->director = $director;
-    $this->actors = $actors;
-  }
-
-  // Funziona per formattare la durata del film
-  public function getFormattedTime() {
-    // Calcolo le ore
-    $hours = floor($this->duration_minutes /60); 
-    // Calcolo i minuti
-    $minuts= $this->duration_minutes %60;
-    return $hours .":". $minuts;
-  }
-}
-
-class Director
-{
-  public $name;
-  public $nationality;
-
-  public function __construct($name, $nationality){
-    $this->name = $name;
-    $this->nationality = $nationality;
-  }
-}
-
-class Actor
-{
-  public $name;
-  public $nationality;
-
-  public function __construct($name, $nationality){
-    $this->name = $name;
-    $this->nationality = $nationality;
-}
-}
-
-$director1 = new Director('Michael Bay', 'USA');
-$director2= new Director('Chad Stahelski', 'USA');
-
-$actors1 = [new Actor('Willem Dafoe', 'USA')];
-$actors2 = [new Actor('Pippo', 'ITA')]; 
-
-$movies1 = new Movies('Transformers', 'Action', 144, 'Netflix', $director1, $actors1);
-$movies2 = new Movies('John Wick', 'Crime', 101, 'Amazon', $director2, $actors2 );
-
-
-// Unico array da iterare
-$movies =  [ $movies1, $movies2 ];
-// var_dump($movies1);
-// var_dump($movies2);
-// echo $movies1->getFormattedTime();
 ?>
 <!DOCTYPE html>
 <html lang="en">
