@@ -7,17 +7,18 @@ class Movies
   public $genre;
   public $duration_minutes;
   public $platform;
+  public $image;
   public $director;
-
   public $actors = [];
   
 
   // Costruttore
-  public function __construct($name, $genre, $duration_minutes, $platform, $director, $actors =[]){
+  public function __construct($name, $genre, $duration_minutes, $platform,  $image, $director, $actors =[]){
     $this->name = $name;
     $this->genre = $genre;
     $this->duration_minutes = $duration_minutes;
     $this->platform = $platform;
+    $this->image = $image;
     $this->director = $director;
     $this->actors = $actors;
   }
